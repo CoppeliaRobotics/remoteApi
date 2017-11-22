@@ -30,11 +30,11 @@ simxVoid _softUnlock()
 }
 
 simxVoid _increaseClientCount()
-{ 
+{
     simxInt i;
     _softLock(); /* simple and not fail-safe. Init/deinit routines would probably be better... */
     if (_wholeThingInitialized==0)
-    { 
+    {
         _wholeThingInitialized=1;
         for (i=0;i<MAX_EXT_API_CONNECTIONS;i++)
         {
@@ -255,7 +255,7 @@ EXTAPI_DLLEXPORT simxVoid simxFinish(simxInt clientID)
         }
 
         /* wait 0.5 seconds */
-        extApi_sleepMs(500);    
+        extApi_sleepMs(500);
 
         for (i=0;i<MAX_EXT_API_CONNECTIONS;i++)
         {
@@ -377,7 +377,7 @@ simxUChar* _exec_null(simxInt clientID,simxInt cmdRaw,simxInt opMode,simxUChar o
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list */
@@ -440,7 +440,7 @@ simxUChar* _exec_null_buffer(simxInt clientID,simxInt cmdRaw,simxInt opMode,simx
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list (we might have this situation when we want to check if there was an error on the server side) */
@@ -500,7 +500,7 @@ simxUChar* _exec_int(simxInt clientID,simxInt cmdRaw,simxInt opMode,simxUChar op
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list */
@@ -558,7 +558,7 @@ simxUChar* _exec_intint(simxInt clientID,simxInt cmdRaw,simxInt opMode,simxUChar
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list */
@@ -619,7 +619,7 @@ simxUChar* _exec_string(simxInt clientID,simxInt cmdRaw,simxInt opMode,simxUChar
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list */
@@ -681,7 +681,7 @@ simxUChar* _exec_int_int(simxInt clientID,simxInt cmdRaw,simxInt opMode,simxUCha
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list (we might have this situation when we want to check if there was an error on the server side) */
@@ -743,7 +743,7 @@ simxUChar* _exec_intint_int(simxInt clientID,simxInt cmdRaw,simxInt opMode,simxU
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list (we might have this situation when we want to check if there was an error on the server side) */
@@ -802,7 +802,7 @@ simxUChar* _exec_intint_buffer(simxInt clientID,simxInt cmdRaw,simxInt opMode,si
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list (we might have this situation when we want to check if there was an error on the server side) */
@@ -864,7 +864,7 @@ simxUChar* _exec_int_float(simxInt clientID,simxInt cmdRaw,simxInt opMode,simxUC
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list (we might have this situation when we want to check if there was an error on the server side) */
@@ -926,7 +926,7 @@ simxUChar* _exec_int_buffer(simxInt clientID,simxInt cmdRaw,simxInt opMode,simxU
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list (we might have this situation when we want to check if there was an error on the server side) */
@@ -988,7 +988,7 @@ simxUChar* _exec_string_buffer(simxInt clientID,simxInt cmdRaw,simxInt opMode,si
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list (we might have this situation when we want to check if there was an error on the server side) */
@@ -1049,7 +1049,7 @@ simxUChar* _exec_intstringstring_buffer(simxInt clientID,simxInt cmdRaw,simxInt 
 
         /* wait until we received a reply, or a timeout (if we wanna wait for the reply) */
         if (_waitBeforeSendingAgainWhenMessageIDArrived[clientID]!=-1)
-            _waitUntilMessageArrived(clientID,error); 
+            _waitUntilMessageArrived(clientID,error);
     }
 
     /* Check if the command is present in the input list (we might have this situation when we want to check if there was an error on the server side) */
@@ -1500,7 +1500,7 @@ simxUChar* _appendCommandToBufferAndTakeIntoAccountPreviouslyReceivedData(const 
 {
     simxInt cmdRaw,cmdSizeWithoutPureData,previousPureDataSize,totalSize;
     simxUChar* prevCmdPtr;
-    
+
     cmdRaw=extApi_endianConversionInt(((simxInt*)(cmdPtr+simx_cmdheaderoffset_cmd))[0])&simx_cmdmask;
     if (cmdRaw==simx_cmd_read_string_stream)
     { /* special handling with this command: we merge it with the previous data of that type that was received: */
@@ -1702,7 +1702,7 @@ simxUChar _sendSimplePacket_socket(simxInt clientID,const simxUChar* packet,simx
     ((simxShort*)toSend)[0]=extApi_endianConversionShort(1); /* Allows to detect Endianness on the other side */
     ((simxShort*)toSend)[1]=extApi_endianConversionShort(packetLength);
     ((simxShort*)toSend)[2]=extApi_endianConversionShort(packetsLeft);
-    
+
     /* Prepare the rest of the packet */
     for (i=0;i<packetLength;i++)
         toSend[SOCKET_HEADER_LENGTH+i]=packet[i];
@@ -1731,7 +1731,7 @@ simxInt _receiveSimplePacket_socket(simxInt clientID,simxUChar** packet,simxShor
         if (extApi_getTimeDiffInMs(startT)>SOCKET_TIMEOUT_READ)
             break;
     }
-    
+
     /* 2. Check if the header is consistent */
     if (totalReceived!=SOCKET_HEADER_LENGTH)
         return(-1);
@@ -1924,12 +1924,12 @@ SIMX_THREAD_RET_TYPE _communicationThread(simxVoid* p)
                             }
                             else
                             { /* only partial data was sent */
-                                
+
                                 /* Try to merge the partial data with same data already present in the partial commands buffer */
                                 cmdPointer=_getSameCommandPointer(replyData+off,_splitCommandsReceived[clientID],_splitCommandsReceived_dataSize[clientID]);
                                 if (cmdPointer!=0)
                                 { /* there is previous partial data. Is it valid? */
-                                    memSize2=extApi_endianConversionInt(((simxInt*)(cmdPointer+simx_cmdheaderoffset_mem_size))[0]);                     
+                                    memSize2=extApi_endianConversionInt(((simxInt*)(cmdPointer+simx_cmdheaderoffset_mem_size))[0]);
                                     if (memSize2!=fullMemSize)
                                     { /* we cannot use the previous version, since it has a different size. Remove it */
                                         _removeChunkFromBuffer(_splitCommandsReceived[clientID],cmdPointer,memSize2,&_splitCommandsReceived_dataSize[clientID]);
@@ -2743,7 +2743,7 @@ EXTAPI_DLLEXPORT simxInt simxLoadScene(simxInt clientID,const simxChar* scenePat
         tmpFileName[21]='0'+(char)(extApi_rand()*9.1f);
         tmpFileName[22]='0'+(char)(extApi_rand()*9.1f);
         tmpFileName[23]='0'+(char)(extApi_rand()*9.1f);
-        returnValue=simxTransferFile(clientID,scenePathAndName,tmpFileName,_replyWaitTimeoutInMs[clientID],simx_opmode_blocking); 
+        returnValue=simxTransferFile(clientID,scenePathAndName,tmpFileName,_replyWaitTimeoutInMs[clientID],simx_opmode_blocking);
         if (returnValue==0)
         {
             _exec_string(clientID,simx_cmd_load_scene,operationMode,0,(simxUChar*)tmpFileName,&returnValue);
@@ -3097,6 +3097,41 @@ EXTAPI_DLLEXPORT simxInt simxGetObjectPosition(simxInt clientID,simxInt objectHa
     */
 }
 
+EXTAPI_DLLEXPORT simxInt simxGetObjectQuaternion(simxInt clientID,simxInt objectHandle,simxInt relativeToObjectHandle,simxFloat* quaternion,simxInt operationMode)
+{
+    simxUChar* dataPointer;
+    simxInt returnValue;
+    if (_communicationThreadRunning[clientID]==0)
+        return(simx_return_initialize_error_flag);
+    if (operationMode==simx_opmode_remove)
+        return(_removeCommandReply_intint(clientID,simx_cmd_get_object_quaternion,objectHandle,relativeToObjectHandle));
+    dataPointer=_exec_intint(clientID,simx_cmd_get_object_quaternion,operationMode,0,objectHandle,relativeToObjectHandle,&returnValue);
+    if ((dataPointer!=0)&&(returnValue==0))
+    {
+        quaternion[0]=_readPureDataFloat(dataPointer,0,0);
+        quaternion[1]=_readPureDataFloat(dataPointer,0,4);
+        quaternion[2]=_readPureDataFloat(dataPointer,0,8);
+        quaternion[3]=_readPureDataFloat(dataPointer,0,12);
+    }
+    return(returnValue);
+    /* until 10/6/2014
+    simxUChar* dataPointer;
+    simxInt returnValue;
+    if (_communicationThreadRunning[clientID]==0)
+        return(simx_return_initialize_error_flag);
+    if (operationMode==simx_opmode_remove)
+        return(_removeCommandReply_int(clientID,simx_cmd_get_object_position,objectHandle));
+    dataPointer=_exec_int_int(clientID,simx_cmd_get_object_position,operationMode,0,objectHandle,relativeToObjectHandle,&returnValue);
+    if ((dataPointer!=0)&&(returnValue==0))
+    {
+        position[0]=_readPureDataFloat(dataPointer,0,0);
+        position[1]=_readPureDataFloat(dataPointer,0,4);
+        position[2]=_readPureDataFloat(dataPointer,0,8);
+    }
+    return(returnValue);
+    */
+}
+
 EXTAPI_DLLEXPORT simxInt simxSetObjectOrientation(simxInt clientID,simxInt objectHandle,simxInt relativeToObjectHandle,const simxFloat* eulerAngles,simxInt operationMode)
 {
     simxInt returnValue;
@@ -3126,6 +3161,24 @@ EXTAPI_DLLEXPORT simxInt simxSetObjectPosition(simxInt clientID,simxInt objectHa
     ((simxFloat*)buffer)[2]=extApi_endianConversionFloat(position[1]);
     ((simxFloat*)buffer)[3]=extApi_endianConversionFloat(position[2]);
     _exec_int_buffer(clientID,simx_cmd_set_object_position,operationMode,0,objectHandle,buffer,4*4,&returnValue);
+    return(returnValue);
+}
+
+EXTAPI_DLLEXPORT simxInt simxSetObjectQuaternion(simxInt clientID,simxInt objectHandle,simxInt relativeToObjectHandle,const simxFloat* quaternion,simxInt operationMode)
+{
+    simxInt returnValue;
+    const simxUInt buffer_size = sizeof(simxInt) + 4*sizeof(simxFloat);
+    simxUChar buffer[buffer_size];
+    if (_communicationThreadRunning[clientID]==0)
+        return(simx_return_initialize_error_flag);
+    if (operationMode==simx_opmode_remove)
+        return(_removeCommandReply_int(clientID,simx_cmd_set_object_quaternion,objectHandle));
+    ((simxInt*)buffer)[0]=extApi_endianConversionInt(relativeToObjectHandle);
+    ((simxFloat*)buffer)[1]=extApi_endianConversionFloat(quaternion[0]);
+    ((simxFloat*)buffer)[2]=extApi_endianConversionFloat(quaternion[1]);
+    ((simxFloat*)buffer)[3]=extApi_endianConversionFloat(quaternion[2]);
+    ((simxFloat*)buffer)[4]=extApi_endianConversionFloat(quaternion[3]);
+    _exec_int_buffer(clientID,simx_cmd_set_object_quaternion,operationMode,0,objectHandle,buffer,buffer_size,&returnValue);
     return(returnValue);
 }
 
@@ -3756,7 +3809,7 @@ EXTAPI_DLLEXPORT simxInt simxAppendStringSignal(simxInt clientID,const simxChar*
     if (_communicationThreadRunning[clientID]==0)
         return(simx_return_initialize_error_flag);
     if (operationMode==simx_opmode_remove)
-        return(_removeCommandReply_string(clientID,simx_cmd_append_string_signal,(simxUChar*)signalName)); 
+        return(_removeCommandReply_string(clientID,simx_cmd_append_string_signal,(simxUChar*)signalName));
     _exec_string_buffer(clientID,simx_cmd_append_string_signal,operationMode,1,(simxUChar*)signalName,(simxUChar*)signalValue,signalLength,&returnValue);
     return(returnValue);
 }
@@ -4057,7 +4110,7 @@ EXTAPI_DLLEXPORT simxInt mtlb_simxCallScriptFunction_a(const simxInt* variousInt
     cnt+=variousIntsIn[5];
 
     _tmpBuffer[variousIntsIn[0]]=extApi_allocateBuffer(cnt);
-    
+
     ((simxInt*)_tmpBuffer[clientID])[0]=variousIntsIn[0];
     ((simxInt*)_tmpBuffer[clientID])[1]=variousIntsIn[1];
     ((simxInt*)_tmpBuffer[clientID])[2]=variousIntsIn[2];
@@ -4120,10 +4173,10 @@ EXTAPI_DLLEXPORT simxInt mtlb_simxCallScriptFunction_b(simxInt clientID,simxInt*
 
     funcName=(simxChar*)(_tmpBuffer[clientID]+off);
     off+=extApi_getStringLength(funcName)+1;
-    
+
     inInts=(simxInt*)(_tmpBuffer[clientID]+off);
     off+=inIntCnt*4;
-    
+
     inFloats=(simxFloat*)(_tmpBuffer[clientID]+off);
     off+=inFloatCnt*4;
 
@@ -4205,7 +4258,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectHandle(JNIEnv *env, 
     env->CallVoidMethod(hdl, mid, objectHandle);
 
     env->ReleaseStringUTFChars(objName, objectName);
-    
+
     return retVal;
 }
 
@@ -4232,7 +4285,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetJointPosition(JNIEnv *env,
     simxFloat position = pos;
     simxInt operationMode = opMode;
     simxInt retVal = simxSetJointPosition(theClientID,jointHandle, position, operationMode);
-    
+
     return retVal;
 }
 
@@ -4302,7 +4355,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetVisionSensorImage(JNIEnv *
         jchar* arr=env->GetCharArrayElements(imgArray,0);
         for (jsize i=0;i<size;i++)
             arr[i]=(unsigned char)image[i];
-        env->ReleaseCharArrayElements(imgArray,arr, 0);         
+        env->ReleaseCharArrayElements(imgArray,arr, 0);
     }
 
     return retVal;
@@ -4317,17 +4370,17 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetVisionSensorImage(JNIEnv *
     simxInt operationMode = opMode;
 
     char* imgbuf=new char[bufferSize];
-    jsize size = bufsize;   
+    jsize size = bufsize;
     jclass cls = env->GetObjectClass(img);
     jmethodID mid = env->GetMethodID(cls, "getArray", "()[C");
     jcharArray imgArray = (jcharArray)env->CallObjectMethod(img, mid);
     jchar* arr=env->GetCharArrayElements(imgArray,0);
     for (jsize i=0;i<size;i++)
         imgbuf[i]=(arr[i]&255);
-    env->ReleaseCharArrayElements(imgArray,arr, 0);         
+    env->ReleaseCharArrayElements(imgArray,arr, 0);
 
     simxInt retVal = simxSetVisionSensorImage(theClientID,sensorHandle,  (simxUChar*)imgbuf, bufferSize, options, operationMode);
-    delete[] imgbuf; 
+    delete[] imgbuf;
 
     return retVal;
 }
@@ -4340,7 +4393,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetJointMatrix(JNIEnv *env, j
     simxInt operationMode = opMode;
 
     simxInt retVal = simxGetJointMatrix(theClientID,jointHandle, matrix, operationMode);
-    
+
     jsize start = 0;
     jsize size = 12;
     jclass cls = env->GetObjectClass(mtx);
@@ -4364,7 +4417,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetSphericalJointMatrix(JNIEn
     jmethodID mid = env->GetMethodID(cls, "getArray", "()[F");
     jfloatArray mtxArray = (jfloatArray)env->CallObjectMethod(mtx, mid);
     env->GetFloatArrayRegion(mtxArray, 0, size, (jfloat *)matrix);
-    
+
     simxInt retVal = simxSetSphericalJointMatrix(theClientID,jointHandle, matrix, operationMode);
 
     return retVal;
@@ -4397,7 +4450,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxJointGetForce(JNIEnv *env, jo
     simxInt theClientID = clientID;
     simxInt jointHandle = hdl;
     simxFloat   force;
-    simxInt operationMode = opMode; 
+    simxInt operationMode = opMode;
 
     simxInt retVal = simxGetJointForce(theClientID,jointHandle, &force, operationMode);
 
@@ -4413,7 +4466,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetJointForce(JNIEnv *env, jo
     simxInt theClientID = clientID;
     simxInt jointHandle = hdl;
     simxFloat   force;
-    simxInt operationMode = opMode; 
+    simxInt operationMode = opMode;
 
     simxInt retVal = simxGetJointForce(theClientID,jointHandle, &force, operationMode);
 
@@ -4436,22 +4489,22 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetJointForce(JNIEnv *env, jo
     return retVal;
 }
 
-JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadForceSensor(JNIEnv *env, jobject obj, jint clientID, jint hdl, jobject st, jobject fv, jobject tv, jint opMode) 
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadForceSensor(JNIEnv *env, jobject obj, jint clientID, jint hdl, jobject st, jobject fv, jobject tv, jint opMode)
 {
     simxInt theClientID = clientID;
     simxInt forceSensorHandle = hdl;
     simxInt operationMode = opMode;
-    simxUChar state;        
+    simxUChar state;
     simxFloat forceVector[3];
     simxFloat torqueVector[3];
-        
+
     simxInt retVal = simxReadForceSensor(theClientID,forceSensorHandle, (st==NULL) ? 0 : &state, (fv==NULL) ? 0 : forceVector, (tv==NULL) ? 0 : torqueVector, operationMode);
 
     if (st != NULL)
     {
         jclass cls = env->GetObjectClass(st);
         jmethodID mid = env->GetMethodID(cls, "setValue", "(I)V");
-        env->CallVoidMethod(st, mid, state);    
+        env->CallVoidMethod(st, mid, state);
     }
 
     jsize start = 0;
@@ -4466,7 +4519,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadForceSensor(JNIEnv *env, 
     }
 
     if (tv != NULL)
-    {       
+    {
         jclass cls = env->GetObjectClass(tv);
         jmethodID mid = env->GetMethodID(cls, "getNewArray", "(I)[F");
         jfloatArray tvArray = (jfloatArray)env->CallObjectMethod(tv, mid, size);
@@ -4481,7 +4534,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxBreakForceSensor(JNIEnv *env,
     simxInt theClientID = clientID;
     simxInt forceSensorHandle = hdl;
     simxInt operationMode = opMode;
-    
+
     simxInt retVal = simxBreakForceSensor(theClientID,forceSensorHandle, operationMode);
     return retVal;
 }
@@ -4506,7 +4559,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadVisionSensor(JNIEnv *env,
             jmethodID mid = env->GetMethodID(cls, "setValue", "(Z)V");
             env->CallVoidMethod(ds, mid, (detectionState==1));
         }
-        
+
         if (av != NULL && retVal==0)
         {
             jsize size = auxValuesCount[0];
@@ -4521,15 +4574,15 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadVisionSensor(JNIEnv *env,
                 jobject o = env->GetObjectArrayElement(avArray, i);
 
                 cls = env->FindClass("coppelia/FloatWA"); // in release 3.0.4 "coppelia/" was forgotten. Thanks to Billy Newman for reporting the bug
-                mid = env->GetMethodID(cls, "getNewArray", "(I)[F");        
+                mid = env->GetMethodID(cls, "getNewArray", "(I)[F");
 
                 jfloatArray fArray = (jfloatArray)env->CallObjectMethod(o, mid, size1);
                 jfloat* f1 = env->GetFloatArrayElements(fArray, 0);
-                for (int k=0; k<size1; k++) 
+                for (int k=0; k<size1; k++)
                 {
                     f1[k] = auxValues[sizeTotal + k];
                 }
-                env->ReleaseFloatArrayElements(fArray, f1, 0);  
+                env->ReleaseFloatArrayElements(fArray, f1, 0);
                 sizeTotal += size1;
             }
             simxReleaseBuffer((simxUChar*)auxValues);
@@ -4645,17 +4698,17 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetVisionSensorDepthBuffer(JN
         jsize size = resolution[0]*resolution[1];
         jclass cls = env->GetObjectClass(buf);
         jmethodID mid = env->GetMethodID(cls, "getNewArray", "(I)[F");
-        jfloatArray bufArray = (jfloatArray)env->CallObjectMethod(buf, mid, size);  
+        jfloatArray bufArray = (jfloatArray)env->CallObjectMethod(buf, mid, size);
         env->SetFloatArrayRegion(bufArray, start, size, (const jfloat*)buffer);
 
         size = 2;
         cls = env->GetObjectClass(res);
         mid = env->GetMethodID(cls, "getNewArray", "(I)[I");
-        jintArray resArray = (jintArray)env->CallObjectMethod(res, mid, size);  
+        jintArray resArray = (jintArray)env->CallObjectMethod(res, mid, size);
         env->SetIntArrayRegion(resArray, start, size, (const jint*)resolution);
     }
 
-    return retVal;  
+    return retVal;
 }
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectChild(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint ci, jobject coh, jint opMode)
@@ -4713,8 +4766,8 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxPauseSimulation(JNIEnv *env, 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxStopSimulation(JNIEnv *env, jobject obj, jint clientID, jint opMode)
 {
     simxInt theClientID = clientID;
-    simxInt operationMode = opMode; 
-    
+    simxInt operationMode = opMode;
+
     simxInt retVal = simxStopSimulation(theClientID,operationMode);
     return retVal;
 }
@@ -4724,7 +4777,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetUISlider(JNIEnv *env, jobj
     simxInt theClientID = clientID;
     simxInt uiHandle = hdl;
     simxInt uiButtonID = ubid;
-    simxInt operationMode = opMode; 
+    simxInt operationMode = opMode;
     simxInt position;
 
     simxInt retVal = simxGetUISlider(theClientID,uiHandle, uiButtonID, &position, operationMode);
@@ -4742,8 +4795,8 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetUISlider(JNIEnv *env, jobj
     simxInt uiHandle = hdl;
     simxInt uiButtonID = ubid;
     simxInt position = pos;
-    simxInt operationMode = opMode; 
-    
+    simxInt operationMode = opMode;
+
     simxInt retVal = simxSetUISlider(theClientID,uiHandle, uiButtonID, position, operationMode);
     return retVal;
 }
@@ -4754,7 +4807,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetUIEventButton(JNIEnv *env,
     simxInt uiHandle = hdl;
     simxInt uiEventButtonID;
     simxInt auxValues[2];
-    simxInt operationMode = opMode; 
+    simxInt operationMode = opMode;
 
     simxInt retVal = simxGetUIEventButton(theClientID,uiHandle, &uiEventButtonID, auxValues, operationMode);
 
@@ -4778,7 +4831,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetUIButtonProperty(JNIEnv *e
     simxInt uiHandle = hdl;
     simxInt uiButtonID = uib;
     simxInt prop;
-    simxInt operationMode = opMode; 
+    simxInt operationMode = opMode;
 
     simxInt retVal = simxGetUIButtonProperty(theClientID,uiHandle, uiButtonID, &prop, operationMode);
 
@@ -4889,7 +4942,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetArrayParameter(JNIEnv *env
     jfloatArray pvArray = (jfloatArray)env->CallObjectMethod(pv, mid);
     mid = env->GetMethodID(cls, "getLength", "()I");
     jint size = env->CallIntMethod(pv, mid);
-    
+
     simxFloat* paramValues = new simxFloat[size];
     env->GetFloatArrayRegion(pvArray, 0, size, (jfloat *)paramValues);
 
@@ -5027,7 +5080,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadDistance(JNIEnv *env, job
     jclass cls = env->GetObjectClass(md);
     jmethodID mid = env->GetMethodID(cls, "setValue", "(F)V");
     env->CallVoidMethod(md, mid, minimumDistance);
-    
+
     return retVal;
 }
 
@@ -5083,9 +5136,9 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadProximitySensor(JNIEnv *e
     if (dp != NULL)
         detectedPoint = new simxFloat[3];
     if (dsnv != NULL)
-        detectedSurfaceNormalVector = new simxFloat[3]; 
+        detectedSurfaceNormalVector = new simxFloat[3];
 
-    simxInt retVal = simxReadProximitySensor(theClientID, sensorHandle, (ds==NULL) ? 0 : detectionState, (dp==NULL) ? 0 : detectedPoint, (doh==NULL) ? 0 : &detectedObjectHandle, (dsnv==NULL) ? 0 : detectedSurfaceNormalVector, operationMode);   
+    simxInt retVal = simxReadProximitySensor(theClientID, sensorHandle, (ds==NULL) ? 0 : detectionState, (dp==NULL) ? 0 : detectedPoint, (doh==NULL) ? 0 : &detectedObjectHandle, (dsnv==NULL) ? 0 : detectedSurfaceNormalVector, operationMode);
 
     if (ds != NULL)
     {
@@ -5118,7 +5171,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadProximitySensor(JNIEnv *e
         env->SetFloatArrayRegion(dsnvArray, 0, size, (jfloat *)detectedSurfaceNormalVector);
         delete[] detectedSurfaceNormalVector;
     }
-    
+
     return retVal;
 }
 
@@ -5152,7 +5205,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxLoadUI(JNIEnv *env, jobject o
 
 
     simxInt retVal = simxLoadUI(theClientID,uiPathAndName, options, &count, uiHandles, operationMode);
-    
+
     env->ReleaseStringUTFChars( uipan,uiPathAndName);
 
     if (retVal==0)
@@ -5161,7 +5214,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxLoadUI(JNIEnv *env, jobject o
         jsize size = count;
         jclass cls = env->GetObjectClass(uih);
         jmethodID mid = env->GetMethodID(cls, "getNewArray", "(I)[I");
-        jintArray uihArray = (jintArray)env->CallObjectMethod(uih, mid, size);  
+        jintArray uihArray = (jintArray)env->CallObjectMethod(uih, mid, size);
         env->SetIntArrayRegion(uihArray, start, size, (const jint*)uiHandles[0]);
         simxReleaseBuffer((simxUChar*)uiHandles[0]);
     }
@@ -5249,7 +5302,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxAuxiliaryConsoleOpen(JNIEnv *
     }
 
     if (bc != NULL)
-    {   
+    {
         jclass cls = env->GetObjectClass(bc);
         jmethodID mid = env->GetMethodID(cls, "getArray", "()[F");
         jfloatArray bcArray = (jfloatArray)env->CallObjectMethod(bc, mid);
@@ -5318,7 +5371,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetLastErrors(JNIEnv *env, jo
         }
     }
 
-    delete[] errorStrings;  
+    delete[] errorStrings;
     return retVal;
 }
 
@@ -5334,7 +5387,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetBooleanParameter(JNIEnv *e
     jclass cls = env->GetObjectClass(pv);
     jmethodID mid = env->GetMethodID(cls, "setValue", "(Z)V");
     env->CallVoidMethod( pv, mid, (paramValue==1));
-    
+
     return retVal;
 }
 
@@ -5450,7 +5503,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjects(JNIEnv *env, jobje
         jsize size = objectCount;
         jclass cls = env->GetObjectClass(oh);
         jmethodID mid = env->GetMethodID(cls, "getNewArray", "(I)[I");
-        jintArray ohArray = (jintArray)env->CallObjectMethod(oh, mid, size);    
+        jintArray ohArray = (jintArray)env->CallObjectMethod(oh, mid, size);
         env->SetIntArrayRegion(ohArray, start, size, (const jint*)objectHandles[0]);
     }
 
@@ -5468,13 +5521,13 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxDisplayDialog(JNIEnv *env, jo
     simxInt dialogType = dt;
 
     jsize start = 0;
-    jsize size = 6;     
+    jsize size = 6;
     simxFloat titleColors[6];
     if (tc != NULL)
     {
         jclass cls = env->GetObjectClass(tc);
         jmethodID mid = env->GetMethodID(cls, "getArray", "()[F");
-        jfloatArray tcArray = (jfloatArray)env->CallObjectMethod(tc, mid);  
+        jfloatArray tcArray = (jfloatArray)env->CallObjectMethod(tc, mid);
         env->GetFloatArrayRegion(tcArray, start, size, (jfloat*)titleColors);
     }
 
@@ -5483,10 +5536,10 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxDisplayDialog(JNIEnv *env, jo
     {
         jclass cls = env->GetObjectClass(dc);
         jmethodID mid = env->GetMethodID(cls, "getArray", "()[F");
-        jfloatArray dcArray = (jfloatArray)env->CallObjectMethod(dc, mid);  
+        jfloatArray dcArray = (jfloatArray)env->CallObjectMethod(dc, mid);
         env->GetFloatArrayRegion(dcArray, start, size, (jfloat*)dialogColors);
     }
-    
+
     simxInt dialogHandle;
     simxInt uiHandle;
     simxInt operationMode = opMode;
@@ -5512,7 +5565,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetDialogInput(JNIEnv *env, j
 {
     simxInt theClientID = clientID;
     simxInt dialogHandle = dh;
-    simxChar **inputText = new simxChar*[1]; 
+    simxChar **inputText = new simxChar*[1];
     simxInt operationMode = opMode;
 
     simxInt retVal = simxGetDialogInput(theClientID,dialogHandle, inputText, operationMode);
@@ -5522,7 +5575,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetDialogInput(JNIEnv *env, j
         jclass cls = env->GetObjectClass(it);
         jmethodID mid = env->GetMethodID(cls, "setValue", "(Ljava/lang/String;)V");
         jstring s = env->NewStringUTF(inputText[0]);
-        env->CallVoidMethod( it, mid, s );  
+        env->CallVoidMethod( it, mid, s );
     }
 
     delete[] inputText;
@@ -5535,11 +5588,11 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCopyPasteObjects(JNIEnv *env,
     jclass cls = env->GetObjectClass(oh);
     jmethodID mid = env->GetMethodID(cls, "getLength", "()I");
     jsize start = 0;
-    jsize size = env->CallIntMethod( oh, mid ); 
+    jsize size = env->CallIntMethod( oh, mid );
     simxInt* objectHandles = new simxInt[size];
     cls = env->GetObjectClass(noh);
     mid = env->GetMethodID(cls, "getArray", "()[I");
-    jintArray ohArray = (jintArray)env->CallObjectMethod(oh, mid);  
+    jintArray ohArray = (jintArray)env->CallObjectMethod(oh, mid);
     env->GetIntArrayRegion(ohArray, start, size, (jint*)objectHandles);
 
     simxInt objectCount = size;
@@ -5553,7 +5606,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCopyPasteObjects(JNIEnv *env,
     {
         cls = env->GetObjectClass(noh);
         mid = env->GetMethodID(cls, "getNewArray", "(I)[I");
-        jintArray nohArray = (jintArray)env->CallObjectMethod(noh, mid, newObjectCount);    
+        jintArray nohArray = (jintArray)env->CallObjectMethod(noh, mid, newObjectCount);
         env->SetIntArrayRegion( nohArray, start, newObjectCount, (const jint*)newObjectHandles[0] );
     }
 
@@ -5577,7 +5630,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectSelection(JNIEnv *en
         jsize size = (jsize)objectCount;
         jclass cls = env->GetObjectClass(oh);
         jmethodID mid = env->GetMethodID(cls, "getNewArray", "(I)[I");
-        jintArray ohArray = (jintArray)env->CallObjectMethod(oh, mid, size);    
+        jintArray ohArray = (jintArray)env->CallObjectMethod(oh, mid, size);
         env->SetIntArrayRegion( ohArray, start, size, (const jint*)objectHandles[0] );
     }
 
@@ -5593,12 +5646,12 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectSelection(JNIEnv *en
     jmethodID mid = env->GetMethodID(cls, "getLength", "()I");
 
     jsize start = 0;
-    jsize size = env->CallIntMethod( hdl, mid );    
+    jsize size = env->CallIntMethod( hdl, mid );
 
     simxInt* objectHandles = new simxInt[size];
     cls = env->GetObjectClass(hdl);
     mid = env->GetMethodID(cls, "getArray", "()[I");
-    jintArray hdlArray = (jintArray)env->CallObjectMethod(hdl, mid);    
+    jintArray hdlArray = (jintArray)env->CallObjectMethod(hdl, mid);
     env->GetIntArrayRegion(hdlArray, start, size, (jint*)objectHandles);
 
     simxInt objectCount = size;
@@ -5654,7 +5707,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetFloatSignal(JNIEnv *env, j
     simxInt theClientID = clientID;
     const simxChar *signalName = (simxChar*)env->GetStringUTFChars(sn, 0);
     simxFloat signalValue[1];
-    simxInt operationMode = opMode; 
+    simxInt operationMode = opMode;
 
     simxInt retVal = simxGetFloatSignal(theClientID,signalName, signalValue, operationMode);
 
@@ -5681,7 +5734,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetIntegerSignal(JNIEnv *env,
     env->CallVoidMethod( sv, mid, signalValue);
 
     env->ReleaseStringUTFChars( sn,signalName);
-    
+
     return retVal;
 }
 
@@ -5703,7 +5756,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetStringSignal(JNIEnv *env, 
         jchar* arr=env->GetCharArrayElements(s,0);
         for (jsize i=0;i<signalLength;i++)
             arr[i]=(unsigned char)signalValue[i];
-        env->ReleaseCharArrayElements(s,arr, 0);            
+        env->ReleaseCharArrayElements(s,arr, 0);
     }
     env->ReleaseStringUTFChars(sn,signalName);
 
@@ -5729,7 +5782,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetAndClearStringSignal(JNIEn
         jchar* arr=env->GetCharArrayElements(s,0);
         for (jsize i=0;i<signalLength;i++)
             arr[i]=(unsigned char)signalValue[i];
-        env->ReleaseCharArrayElements(s,arr, 0);            
+        env->ReleaseCharArrayElements(s,arr, 0);
     }
     env->ReleaseStringUTFChars(sn,signalName);
 
@@ -5755,7 +5808,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadStringStream(JNIEnv *env,
         jchar* arr=env->GetCharArrayElements(s,0);
         for (jsize i=0;i<signalLength;i++)
             arr[i]=(unsigned char)signalValue[i];
-        env->ReleaseCharArrayElements(s,arr, 0);            
+        env->ReleaseCharArrayElements(s,arr, 0);
     }
     env->ReleaseStringUTFChars(sn,signalName);
 
@@ -5803,11 +5856,11 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetStringSignal(JNIEnv *env, 
     jchar* arr=env->GetCharArrayElements(sigArray,0);
     for (jsize i=0;i<signalLength;i++)
         signalValue[i]=(arr[i]&255);
-    env->ReleaseCharArrayElements(sigArray,arr, 0);         
+    env->ReleaseCharArrayElements(sigArray,arr, 0);
 
     simxInt retVal = simxSetStringSignal(theClientID,signalName, (unsigned char*)signalValue, (int)signalLength, operationMode);
 
-    delete[] signalValue; 
+    delete[] signalValue;
 
     env->ReleaseStringUTFChars( sn,signalName);
     return retVal;
@@ -5845,11 +5898,11 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxWriteStringStream(JNIEnv *env
     jchar* arr=env->GetCharArrayElements(sigArray,0);
     for (jsize i=0;i<signalLength;i++)
         signalValue[i]=(arr[i]&255);
-    env->ReleaseCharArrayElements(sigArray,arr, 0);         
+    env->ReleaseCharArrayElements(sigArray,arr, 0);
 
     simxInt retVal = simxWriteStringStream(theClientID,signalName, (unsigned char*)signalValue, signalLength, operationMode);
 
-    delete[] signalValue; 
+    delete[] signalValue;
 
     env->ReleaseStringUTFChars( sn,signalName);
     return retVal;
@@ -5873,7 +5926,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetLastCmdTime(JNIEnv *env, j
 {
     simxInt theClientID = clientID;
     simxInt retVal = simxGetLastCmdTime(theClientID);
-    return retVal;  
+    return retVal;
 }
 
 
@@ -5881,7 +5934,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSynchronousTrigger(JNIEnv *en
 {
     simxInt theClientID = clientID;
     simxInt retVal = simxSynchronousTrigger(theClientID);
-    return retVal;  
+    return retVal;
 }
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSynchronous(JNIEnv *env, jobject obj, jint clientID, jboolean e)
@@ -5910,7 +5963,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetInMessageInfo(JNIEnv *env,
     jclass cls = env->GetObjectClass(i);
     jmethodID mid = env->GetMethodID(cls, "setValue", "(I)V");
     env->CallVoidMethod( i, mid, info);
-    return retVal;  
+    return retVal;
 }
 
 
@@ -5936,7 +5989,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxTransferFile(JNIEnv *env, job
     simxInt operationMode = opMode;
 
     simxInt retVal = simxTransferFile(theClientID,filePathAndName, fileName_serverSide, timeOut, operationMode);
-    
+
     return retVal;
 }
 
@@ -5947,7 +6000,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxEraseFile(JNIEnv *env, jobjec
     simxInt operationMode = opMode;
 
     simxInt retVal = simxEraseFile(theClientID,fileName_serverSide, operationMode);
-    
+
     return retVal;
 
 }
@@ -5995,13 +6048,13 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxQuery(JNIEnv *env, jobject ob
     jchar* arr=env->GetCharArrayElements(sigArray,0);
     for (jsize i=0;i<signalLength;i++)
         signalValue[i]=(arr[i]&255);
-    env->ReleaseCharArrayElements(sigArray,arr, 0);         
+    env->ReleaseCharArrayElements(sigArray,arr, 0);
 
     simxUChar* retSignalValue;
     simxInt retSignalLength;
     simxInt retVal = simxQuery(theClientID,signalName, (unsigned char*)signalValue, signalLength,retSignalName,&retSignalValue,&retSignalLength,timeOutInMs_);
 
-    delete[] signalValue; 
+    delete[] signalValue;
 
     if (retVal==0)
     {
@@ -6011,7 +6064,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxQuery(JNIEnv *env, jobject ob
         jchar* arr=env->GetCharArrayElements(s,0);
         for (jsize i=0;i<retSignalLength;i++)
             arr[i]=(unsigned char)retSignalValue[i];
-        env->ReleaseCharArrayElements(s,arr, 0);            
+        env->ReleaseCharArrayElements(s,arr, 0);
     }
 
     env->ReleaseStringUTFChars( sn,signalName);
@@ -6039,17 +6092,17 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectGroupData(JNIEnv *en
 
         jclass handlesCls = env->GetObjectClass(handles);
         jmethodID handlesMid = env->GetMethodID(handlesCls, "getNewArray", "(I)[I");
-        jintArray handlesArray = (jintArray)env->CallObjectMethod(handles, handlesMid, theHandleCount); 
+        jintArray handlesArray = (jintArray)env->CallObjectMethod(handles, handlesMid, theHandleCount);
         env->SetIntArrayRegion( handlesArray, 0, theHandleCount, (const jint*)theHandles );
 
         jclass intDataCls = env->GetObjectClass(intData);
         jmethodID intDataMid = env->GetMethodID(intDataCls, "getNewArray", "(I)[I");
-        jintArray intDataArray = (jintArray)env->CallObjectMethod(intData, intDataMid, theIntDataCount);    
+        jintArray intDataArray = (jintArray)env->CallObjectMethod(intData, intDataMid, theIntDataCount);
         env->SetIntArrayRegion( intDataArray, 0, theIntDataCount, (const jint*)theInts );
 
         jclass floatDataCls = env->GetObjectClass(floatData);
         jmethodID floatDataMid = env->GetMethodID(floatDataCls, "getNewArray", "(I)[F");
-        jfloatArray floatDataArray = (jfloatArray)env->CallObjectMethod(floatData, floatDataMid, theFloatDataCount);    
+        jfloatArray floatDataArray = (jfloatArray)env->CallObjectMethod(floatData, floatDataMid, theFloatDataCount);
         env->SetFloatArrayRegion( floatDataArray, 0, theFloatDataCount, (const jfloat*)theFloats );
 
         jclass namesCls = env->GetObjectClass(stringData);
@@ -6066,14 +6119,14 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectGroupData(JNIEnv *en
     return retVal;
 }
 
-JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectVelocity(JNIEnv *env, jobject obj, jint clientID, jint hdl, jobject lv, jobject av, jint opMode) 
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectVelocity(JNIEnv *env, jobject obj, jint clientID, jint hdl, jobject lv, jobject av, jint opMode)
 {
     simxInt theClientID = clientID;
     simxInt objectHandle = hdl;
     simxInt operationMode = opMode;
     simxFloat linearVel[3];
     simxFloat angularVel[3];
-        
+
     simxInt retVal = simxGetObjectVelocity(theClientID,objectHandle, (lv==NULL) ? 0 : linearVel, (av==NULL) ? 0 : angularVel, operationMode);
 
     if (lv != NULL)
@@ -6085,7 +6138,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectVelocity(JNIEnv *env
     }
 
     if (av != NULL)
-    {       
+    {
         jclass cls = env->GetObjectClass(av);
         jmethodID mid = env->GetMethodID(cls, "getNewArray", "(I)[F");
         jfloatArray avArray = (jfloatArray)env->CallObjectMethod(av, mid, 3);
@@ -6119,11 +6172,11 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCallScriptFunction(JNIEnv *en
     {
         jclass cls = env->GetObjectClass(inInts);
         jmethodID mid = env->GetMethodID(cls, "getLength", "()I");
-        theInIntCnt = env->CallIntMethod(inInts, mid ); 
+        theInIntCnt = env->CallIntMethod(inInts, mid );
         theInInts = new simxInt[theInIntCnt];
         cls = env->GetObjectClass(inInts);
         mid = env->GetMethodID(cls, "getArray", "()[I");
-        jintArray hdlArray = (jintArray)env->CallObjectMethod(inInts, mid); 
+        jintArray hdlArray = (jintArray)env->CallObjectMethod(inInts, mid);
         env->GetIntArrayRegion(hdlArray,0, theInIntCnt, (jint*)theInInts);
     }
 
@@ -6133,11 +6186,11 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCallScriptFunction(JNIEnv *en
     {
         jclass cls = env->GetObjectClass(inFloats);
         jmethodID mid = env->GetMethodID(cls, "getLength", "()I");
-        theInFloatCnt = env->CallIntMethod(inFloats, mid ); 
+        theInFloatCnt = env->CallIntMethod(inFloats, mid );
         theInFloats = new simxFloat[theInFloatCnt];
         cls = env->GetObjectClass(inFloats);
         mid = env->GetMethodID(cls, "getArray", "()[F");
-        jfloatArray hdlArray = (jfloatArray)env->CallObjectMethod(inFloats, mid);   
+        jfloatArray hdlArray = (jfloatArray)env->CallObjectMethod(inFloats, mid);
         env->GetFloatArrayRegion(hdlArray,0, theInFloatCnt, (jfloat*)theInFloats);
     }
 
@@ -6150,7 +6203,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCallScriptFunction(JNIEnv *en
         theInStringCnt = env->CallIntMethod(inStrings, mid );
         cls = env->GetObjectClass(inStrings);
         mid = env->GetMethodID(cls, "getArray", "()[Ljava/lang/String;");
-        jobjectArray hdlArray = (jobjectArray)env->CallObjectMethod(inStrings, mid);    
+        jobjectArray hdlArray = (jobjectArray)env->CallObjectMethod(inStrings, mid);
         int totSize=0;
         for (int i=0;i<theInStringCnt;i++)
         {
@@ -6185,16 +6238,16 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCallScriptFunction(JNIEnv *en
         jchar* arr=env->GetCharArrayElements(buffArray,0);
         for (jsize i=0;i<theInBufferSize;i++)
             theInBuffer[i]=(arr[i]&255);
-        env->ReleaseCharArrayElements(buffArray,arr, 0);            
+        env->ReleaseCharArrayElements(buffArray,arr, 0);
     }
 
     simxInt retVal = simxCallScriptFunction(theClientID,theScriptDescription,theOptions,theFunctionName,theInIntCnt,theInInts,theInFloatCnt,theInFloats,theInStringCnt,theInStrings,theInBufferSize,(simxUChar*)theInBuffer,&theOutIntCnt,&theOutInts,&theOutFloatCnt,&theOutFloats,&theOutStringCnt,&theOutStrings,&theOutBufferSize,&theOutBuffer,theOpMode);
 
 
-    delete[] theInInts; 
-    delete[] theInFloats; 
-    delete[] theInStrings; 
-    delete[] theInBuffer; 
+    delete[] theInInts;
+    delete[] theInFloats;
+    delete[] theInStrings;
+    delete[] theInBuffer;
 
     if (retVal==0)
     {
@@ -6202,7 +6255,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCallScriptFunction(JNIEnv *en
         {
             jclass outIntsCls = env->GetObjectClass(outInts);
             jmethodID outIntsMid = env->GetMethodID(outIntsCls, "getNewArray", "(I)[I");
-            jintArray outIntsArray = (jintArray)env->CallObjectMethod(outInts, outIntsMid, theOutIntCnt);   
+            jintArray outIntsArray = (jintArray)env->CallObjectMethod(outInts, outIntsMid, theOutIntCnt);
             env->SetIntArrayRegion( outIntsArray, 0, theOutIntCnt, (const jint*)theOutInts );
         }
 
@@ -6210,7 +6263,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCallScriptFunction(JNIEnv *en
         {
             jclass outFloatsCls = env->GetObjectClass(outFloats);
             jmethodID outFloatsMid = env->GetMethodID(outFloatsCls, "getNewArray", "(I)[F");
-            jfloatArray outFloatsArray = (jfloatArray)env->CallObjectMethod(outFloats, outFloatsMid, theOutFloatCnt);   
+            jfloatArray outFloatsArray = (jfloatArray)env->CallObjectMethod(outFloats, outFloatsMid, theOutFloatCnt);
             env->SetFloatArrayRegion( outFloatsArray, 0, theOutFloatCnt, (const jfloat*)theOutFloats );
         }
 
