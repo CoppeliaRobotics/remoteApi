@@ -3167,8 +3167,7 @@ EXTAPI_DLLEXPORT simxInt simxSetObjectPosition(simxInt clientID,simxInt objectHa
 EXTAPI_DLLEXPORT simxInt simxSetObjectQuaternion(simxInt clientID,simxInt objectHandle,simxInt relativeToObjectHandle,const simxFloat* quaternion,simxInt operationMode)
 {
     simxInt returnValue;
-    const simxUInt buffer_size = sizeof(simxInt) + 4*sizeof(simxFloat);
-    simxUChar buffer[buffer_size];
+    simxUChar buffer[5*4];
     if (_communicationThreadRunning[clientID]==0)
         return(simx_return_initialize_error_flag);
     if (operationMode==simx_opmode_remove)
@@ -3178,7 +3177,7 @@ EXTAPI_DLLEXPORT simxInt simxSetObjectQuaternion(simxInt clientID,simxInt object
     ((simxFloat*)buffer)[2]=extApi_endianConversionFloat(quaternion[1]);
     ((simxFloat*)buffer)[3]=extApi_endianConversionFloat(quaternion[2]);
     ((simxFloat*)buffer)[4]=extApi_endianConversionFloat(quaternion[3]);
-    _exec_int_buffer(clientID,simx_cmd_set_object_quaternion,operationMode,0,objectHandle,buffer,buffer_size,&returnValue);
+    _exec_int_buffer(clientID,simx_cmd_set_object_quaternion,operationMode,0,objectHandle,buffer,5*4,&returnValue);
     return(returnValue);
 }
 
