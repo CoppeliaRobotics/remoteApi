@@ -2524,6 +2524,11 @@ EXTAPI_DLLEXPORT simxInt simxGetJointForce(simxInt clientID,simxInt jointHandle,
 }
 
 EXTAPI_DLLEXPORT simxInt simxSetJointForce(simxInt clientID,simxInt jointHandle,simxFloat force,simxInt operationMode)
+{ // DEPRECATED
+    return(simxSetJointMaxForce(clientID,jointHandle,force,operationMode));
+}
+
+EXTAPI_DLLEXPORT simxInt simxSetJointMaxForce(simxInt clientID,simxInt jointHandle,simxFloat force,simxInt operationMode)
 {
     simxInt returnValue;
     if (_communicationThreadRunning[clientID]==0)
@@ -2531,6 +2536,20 @@ EXTAPI_DLLEXPORT simxInt simxSetJointForce(simxInt clientID,simxInt jointHandle,
     if (operationMode==simx_opmode_remove)
         return(_removeCommandReply_int(clientID,simx_cmd_set_joint_force,jointHandle));
     _exec_int_float(clientID,simx_cmd_set_joint_force,operationMode,0,jointHandle,force,&returnValue);
+    return(returnValue);
+}
+
+EXTAPI_DLLEXPORT simxInt simxGetJointMaxForce(simxInt clientID,simxInt jointHandle,simxFloat* force,simxInt operationMode)
+{
+    simxUChar* dataPointer;
+    simxInt returnValue;
+    if (_communicationThreadRunning[clientID]==0)
+        return(simx_return_initialize_error_flag);
+    if (operationMode==simx_opmode_remove)
+        return(_removeCommandReply_int(clientID,simx_cmd_get_joint_max_force,jointHandle));
+    dataPointer=_exec_int(clientID,simx_cmd_get_joint_max_force,operationMode,0,jointHandle,&returnValue);
+    if ((dataPointer!=0)&&(returnValue==0))
+        force[0]=_readPureDataFloat(dataPointer,0,0);
     return(returnValue);
 }
 
@@ -4001,7 +4020,12 @@ EXTAPI_DLLEXPORT simxInt mtlb_simxSetJointTargetPosition(simxInt clientID,simxIn
 
 EXTAPI_DLLEXPORT simxInt mtlb_simxSetJointForce(simxInt clientID,simxInt jointHandle,simxFloat* force,simxInt operationMode)
 {
-    return(simxSetJointForce(clientID,jointHandle,force[0],operationMode));
+    return(simxSetJointMaxForce(clientID,jointHandle,force[0],operationMode));
+}
+
+EXTAPI_DLLEXPORT simxInt mtlb_simxSetJointMaxForce(simxInt clientID,simxInt jointHandle,simxFloat* force,simxInt operationMode)
+{
+    return(simxSetJointMaxForce(clientID,jointHandle,force[0],operationMode));
 }
 
 EXTAPI_DLLEXPORT simxInt mtlb_simxSetFloatSignal(simxInt clientID,const simxChar* signalName,simxFloat* signalValue,simxInt operationMode)
@@ -4483,7 +4507,35 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetJointForce(JNIEnv *env, jo
     simxFloat force = frc;
     simxInt operationMode = opMode;
 
-    simxInt retVal = simxSetJointForce(theClientID,jointHandle, force, operationMode);
+    simxInt retVal = simxSetJointMaxForce(theClientID,jointHandle, force, operationMode);
+
+    return retVal;
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetJointMaxForce(JNIEnv *env, jobject obj, jint clientID, jint hdl, jfloat frc, jint opMode)
+{
+    simxInt theClientID = clientID;
+    simxInt jointHandle = hdl;
+    simxFloat force = frc;
+    simxInt operationMode = opMode;
+
+    simxInt retVal = simxSetJointMaxForce(theClientID,jointHandle, force, operationMode);
+
+    return retVal;
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetJointMaxForce(JNIEnv *env, jobject obj, jint clientID, jint hdl, jobject frc, jint opMode)
+{
+    simxInt theClientID = clientID;
+    simxInt jointHandle = hdl;
+    simxFloat   force;
+    simxInt operationMode = opMode;
+
+    simxInt retVal = simxGetJointMaxForce(theClientID,jointHandle, &force, operationMode);
+
+    jclass cls = env->GetObjectClass(frc);
+    jmethodID mid = env->GetMethodID(cls, "setValue", "(F)V");
+    env->CallVoidMethod(frc, mid, force);
 
     return retVal;
 }
