@@ -3064,22 +3064,6 @@ EXTAPI_DLLEXPORT simxInt simxGetObjectOrientation(simxInt clientID,simxInt objec
         eulerAngles[2]=_readPureDataFloat(dataPointer,0,8);
     }
     return(returnValue);
-    /* until 10/6/2014
-    simxUChar* dataPointer;
-    simxInt returnValue;
-    if (_communicationThreadRunning[clientID]==0)
-        return(simx_return_initialize_error_flag);
-    if (operationMode==simx_opmode_remove)
-        return(_removeCommandReply_int(clientID,simx_cmd_get_object_orientation,objectHandle));
-    dataPointer=_exec_int_int(clientID,simx_cmd_get_object_orientation,operationMode,0,objectHandle,relativeToObjectHandle,&returnValue);
-    if ((dataPointer!=0)&&(returnValue==0))
-    {
-        eulerAngles[0]=_readPureDataFloat(dataPointer,0,0);
-        eulerAngles[1]=_readPureDataFloat(dataPointer,0,4);
-        eulerAngles[2]=_readPureDataFloat(dataPointer,0,8);
-    }
-    return(returnValue);
-    */
 }
 
 EXTAPI_DLLEXPORT simxInt simxGetObjectPosition(simxInt clientID,simxInt objectHandle,simxInt relativeToObjectHandle,simxFloat* position,simxInt operationMode)
@@ -3098,22 +3082,6 @@ EXTAPI_DLLEXPORT simxInt simxGetObjectPosition(simxInt clientID,simxInt objectHa
         position[2]=_readPureDataFloat(dataPointer,0,8);
     }
     return(returnValue);
-    /* until 10/6/2014
-    simxUChar* dataPointer;
-    simxInt returnValue;
-    if (_communicationThreadRunning[clientID]==0)
-        return(simx_return_initialize_error_flag);
-    if (operationMode==simx_opmode_remove)
-        return(_removeCommandReply_int(clientID,simx_cmd_get_object_position,objectHandle));
-    dataPointer=_exec_int_int(clientID,simx_cmd_get_object_position,operationMode,0,objectHandle,relativeToObjectHandle,&returnValue);
-    if ((dataPointer!=0)&&(returnValue==0))
-    {
-        position[0]=_readPureDataFloat(dataPointer,0,0);
-        position[1]=_readPureDataFloat(dataPointer,0,4);
-        position[2]=_readPureDataFloat(dataPointer,0,8);
-    }
-    return(returnValue);
-    */
 }
 
 EXTAPI_DLLEXPORT simxInt simxGetObjectQuaternion(simxInt clientID,simxInt objectHandle,simxInt relativeToObjectHandle,simxFloat* quaternion,simxInt operationMode)
@@ -3133,22 +3101,6 @@ EXTAPI_DLLEXPORT simxInt simxGetObjectQuaternion(simxInt clientID,simxInt object
         quaternion[3]=_readPureDataFloat(dataPointer,0,12);
     }
     return(returnValue);
-    /* until 10/6/2014
-    simxUChar* dataPointer;
-    simxInt returnValue;
-    if (_communicationThreadRunning[clientID]==0)
-        return(simx_return_initialize_error_flag);
-    if (operationMode==simx_opmode_remove)
-        return(_removeCommandReply_int(clientID,simx_cmd_get_object_position,objectHandle));
-    dataPointer=_exec_int_int(clientID,simx_cmd_get_object_position,operationMode,0,objectHandle,relativeToObjectHandle,&returnValue);
-    if ((dataPointer!=0)&&(returnValue==0))
-    {
-        position[0]=_readPureDataFloat(dataPointer,0,0);
-        position[1]=_readPureDataFloat(dataPointer,0,4);
-        position[2]=_readPureDataFloat(dataPointer,0,8);
-    }
-    return(returnValue);
-    */
 }
 
 EXTAPI_DLLEXPORT simxInt simxSetObjectOrientation(simxInt clientID,simxInt objectHandle,simxInt relativeToObjectHandle,const simxFloat* eulerAngles,simxInt operationMode)
@@ -3434,6 +3386,34 @@ EXTAPI_DLLEXPORT simxInt simxReadDistance(simxInt clientID,simxInt distanceObjec
     if (operationMode==simx_opmode_remove)
         return(_removeCommandReply_int(clientID,simx_cmd_read_distance,distanceObjectHandle));
     dataPointer=_exec_int(clientID,simx_cmd_read_distance,operationMode,0,distanceObjectHandle,&returnValue);
+    if ((dataPointer!=0)&&(returnValue==0))
+        minimumDistance[0]=_readPureDataFloat(dataPointer,0,0);
+    return(returnValue);
+}
+
+EXTAPI_DLLEXPORT simxInt simxCheckCollision(simxInt clientID,simxInt entity1,simxInt entity2,simxUChar* collisionState,simxInt operationMode)
+{
+    simxUChar* dataPointer;
+    simxInt returnValue;
+    if (_communicationThreadRunning[clientID]==0)
+        return(simx_return_initialize_error_flag);
+    if (operationMode==simx_opmode_remove)
+        return(_removeCommandReply_intInt(clientID,simx_cmd_check_collision,entity1,entity2));
+    dataPointer=_exec_intInt(clientID,simx_cmd_check_collision,operationMode,0,entity1,entity2,&returnValue);
+    if ((dataPointer!=0)&&(returnValue==0))
+        collisionState[0]=(simxUChar)_readPureDataInt(dataPointer,0,0);
+    return(returnValue);
+}
+
+EXTAPI_DLLEXPORT simxInt simxCheckDistance(simxInt clientID,simxInt entity1,simxInt entity2,simxFloat* minimumDistance,simxInt operationMode)
+{
+    simxUChar* dataPointer;
+    simxInt returnValue;
+    if (_communicationThreadRunning[clientID]==0)
+        return(simx_return_initialize_error_flag);
+    if (operationMode==simx_opmode_remove)
+        return(_removeCommandReply_intInt(clientID,simx_cmd_check_distance,entity1,entity2));
+    dataPointer=_exec_intInt(clientID,simx_cmd_check_distance,operationMode,0,entity1,entity2,&returnValue);
     if ((dataPointer!=0)&&(returnValue==0))
         minimumDistance[0]=_readPureDataFloat(dataPointer,0,0);
     return(returnValue);
@@ -5135,6 +5115,23 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadDistance(JNIEnv *env, job
     return retVal;
 }
 
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCheckDistance(JNIEnv *env, jobject obj, jint clientID, jint ent1, jint ent2, jobject md, jint opMode)
+{
+    simxInt theClientID = clientID;
+    simxInt entity1 = ent1;
+    simxInt entity2 = ent2;
+    simxInt operationMode = opMode;
+    simxFloat minimumDistance;
+
+    simxInt retVal = simxCheckDistance(theClientID,entity1,entity2, &minimumDistance, operationMode);
+
+    jclass cls = env->GetObjectClass(md);
+    jmethodID mid = env->GetMethodID(cls, "setValue", "(F)V");
+    env->CallVoidMethod(md, mid, minimumDistance);
+
+    return retVal;
+}
+
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetFloatingParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
 {
     simxInt theClientID = clientID;
@@ -5529,6 +5526,24 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadCollision(JNIEnv *env, jo
     simxInt operationMode = opMode;
 
     simxInt retVal = simxReadCollision(theClientID, collisionObjectHandle, &collisionState, operationMode);
+
+    jclass cls = env->GetObjectClass(cs);
+    jmethodID mid = env->GetMethodID(cls, "setValue", "(Z)V");
+    env->CallVoidMethod( cs, mid, (collisionState==1));
+
+    return retVal;
+}
+
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCheckCollision(JNIEnv *env, jobject obj, jint clientID, jint ent1, jint ent2, jobject cs, jint opMode)
+{
+    simxInt theClientID = clientID;
+    simxInt entity1 = ent1;
+    simxInt entity2 = ent2;
+    simxUChar collisionState;
+    simxInt operationMode = opMode;
+
+    simxInt retVal = simxCheckCollision(theClientID, entity1, entity2, &collisionState, operationMode);
 
     jclass cls = env->GetObjectClass(cs);
     jmethodID mid = env->GetMethodID(cls, "setValue", "(Z)V");

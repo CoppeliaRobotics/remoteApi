@@ -160,6 +160,8 @@ EXTAPI_DLLEXPORT simxInt simxGetDistanceHandle(simxInt clientID,const simxChar* 
 EXTAPI_DLLEXPORT simxInt simxGetCollectionHandle(simxInt clientID,const simxChar* collectionName,simxInt* handle,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxReadCollision(simxInt clientID,simxInt collisionObjectHandle,simxUChar* collisionState,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxReadDistance(simxInt clientID,simxInt distanceObjectHandle,simxFloat* minimumDistance,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxCheckCollision(simxInt clientID,simxInt entity1,simxInt entity2,simxUChar* collisionState,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxCheckDistance(simxInt clientID,simxInt entity1,simxInt entity2,simxFloat* minimumDistance,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxRemoveObject(simxInt clientID,simxInt objectHandle,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxRemoveModel(simxInt clientID,simxInt objectHandle,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxRemoveUI(simxInt clientID,simxInt uiHandle,simxInt operationMode);
