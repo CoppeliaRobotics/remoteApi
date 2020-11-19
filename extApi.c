@@ -3398,8 +3398,8 @@ EXTAPI_DLLEXPORT simxInt simxCheckCollision(simxInt clientID,simxInt entity1,sim
     if (_communicationThreadRunning[clientID]==0)
         return(simx_return_initialize_error_flag);
     if (operationMode==simx_opmode_remove)
-        return(_removeCommandReply_intInt(clientID,simx_cmd_check_collision,entity1,entity2));
-    dataPointer=_exec_intInt(clientID,simx_cmd_check_collision,operationMode,0,entity1,entity2,&returnValue);
+        return(_removeCommandReply_intint(clientID,simx_cmd_check_collision,entity1,entity2));
+    dataPointer=_exec_intint(clientID,simx_cmd_check_collision,operationMode,0,entity1,entity2,&returnValue);
     if ((dataPointer!=0)&&(returnValue==0))
         collisionState[0]=(simxUChar)_readPureDataInt(dataPointer,0,0);
     return(returnValue);
@@ -3412,8 +3412,8 @@ EXTAPI_DLLEXPORT simxInt simxCheckDistance(simxInt clientID,simxInt entity1,simx
     if (_communicationThreadRunning[clientID]==0)
         return(simx_return_initialize_error_flag);
     if (operationMode==simx_opmode_remove)
-        return(_removeCommandReply_intInt(clientID,simx_cmd_check_distance,entity1,entity2));
-    dataPointer=_exec_intInt(clientID,simx_cmd_check_distance,operationMode,0,entity1,entity2,&returnValue);
+        return(_removeCommandReply_intint(clientID,simx_cmd_check_distance,entity1,entity2));
+    dataPointer=_exec_intint(clientID,simx_cmd_check_distance,operationMode,0,entity1,entity2,&returnValue);
     if ((dataPointer!=0)&&(returnValue==0))
         minimumDistance[0]=_readPureDataFloat(dataPointer,0,0);
     return(returnValue);
