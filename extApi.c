@@ -5258,7 +5258,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCheckDistance(JNIEnv *env, jo
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetFloatingParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
 {
-    return JNICALL Java_coppelia_remoteApi_simxGetFloatParam(env,obj,clientID,pi,pv,opMode);
+    return Java_coppelia_remoteApi_simxGetFloatParam(env,obj,clientID,pi,pv,opMode);
 }
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetFloatParam(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
