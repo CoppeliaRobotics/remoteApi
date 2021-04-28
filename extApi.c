@@ -2149,7 +2149,7 @@ EXTAPI_DLLEXPORT simxInt simxGetPingTime(simxInt clientID,simxInt* pingTime)
     simxInt startTime=extApi_getTimeInMs();
     if (_communicationThreadRunning[clientID]==0)
         return(0);
-    res=simxGetIntegerParameter(clientID,sim_intparam_program_version,&dummyVal,simx_opmode_blocking); /* just a dummy command */
+    res=simxGetInt32Param(clientID,sim_intparam_program_version,&dummyVal,simx_opmode_blocking); /* just a dummy command */
     res=(res|simx_return_remote_error_flag)-simx_return_remote_error_flag;
     pingTime[0]=extApi_getTimeDiffInMs(startTime);
     return(res);
@@ -3206,6 +3206,51 @@ EXTAPI_DLLEXPORT simxInt simxGetLastErrors(simxInt clientID,simxInt* errorCnt,si
 
 EXTAPI_DLLEXPORT simxInt simxGetArrayParameter(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValues,simxInt operationMode)
 {
+    return simxGetArrayParam(clientID,paramIdentifier,paramValues,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxSetArrayParameter(simxInt clientID,simxInt paramIdentifier,const simxFloat* paramValues,simxInt operationMode)
+{
+    return simxSetArrayParam(clientID,paramIdentifier,paramValues,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxGetBooleanParameter(simxInt clientID,simxInt paramIdentifier,simxUChar* paramValue,simxInt operationMode)
+{
+    return simxGetBoolParam(clientID,paramIdentifier,paramValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxSetBooleanParameter(simxInt clientID,simxInt paramIdentifier,simxUChar paramValue,simxInt operationMode)
+{
+    return simxSetBoolParam(clientID,paramIdentifier,paramValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxGetIntegerParameter(simxInt clientID,simxInt paramIdentifier,simxInt* paramValue,simxInt operationMode)
+{
+    return simxGetInt32Param(clientID,paramIdentifier,paramValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxSetIntegerParameter(simxInt clientID,simxInt paramIdentifier,simxInt paramValue,simxInt operationMode)
+{
+    return simxSetInt32Param(clientID,paramIdentifier,paramValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxGetFloatingParameter(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValue,simxInt operationMode)
+{
+    return simxGetFloatParam(clientID,paramIdentifier,paramValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxSetFloatingParameter(simxInt clientID,simxInt paramIdentifier,simxFloat paramValue,simxInt operationMode)
+{
+    return simxSetFloatParam(clientID,paramIdentifier,paramValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxGetStringParameter(simxInt clientID,simxInt paramIdentifier,simxChar** paramValue,simxInt operationMode)
+{
+    return simxGetStringParam(clientID,paramIdentifier,paramValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxGetArrayParam(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValues,simxInt operationMode)
+{
     simxUChar* dataPointer;
     simxInt returnValue,i;
     if (_communicationThreadRunning[clientID]==0)
@@ -3221,7 +3266,7 @@ EXTAPI_DLLEXPORT simxInt simxGetArrayParameter(simxInt clientID,simxInt paramIde
     return(returnValue);
 }
 
-EXTAPI_DLLEXPORT simxInt simxSetArrayParameter(simxInt clientID,simxInt paramIdentifier,const simxFloat* paramValues,simxInt operationMode)
+EXTAPI_DLLEXPORT simxInt simxSetArrayParam(simxInt clientID,simxInt paramIdentifier,const simxFloat* paramValues,simxInt operationMode)
 {
     simxInt returnValue;
     if (_communicationThreadRunning[clientID]==0)
@@ -3232,7 +3277,7 @@ EXTAPI_DLLEXPORT simxInt simxSetArrayParameter(simxInt clientID,simxInt paramIde
     return(returnValue);
 }
 
-EXTAPI_DLLEXPORT simxInt simxGetBooleanParameter(simxInt clientID,simxInt paramIdentifier,simxUChar* paramValue,simxInt operationMode)
+EXTAPI_DLLEXPORT simxInt simxGetBoolParam(simxInt clientID,simxInt paramIdentifier,simxUChar* paramValue,simxInt operationMode)
 {
     simxUChar* dataPointer;
     simxInt returnValue;
@@ -3246,7 +3291,7 @@ EXTAPI_DLLEXPORT simxInt simxGetBooleanParameter(simxInt clientID,simxInt paramI
     return(returnValue);
 }
 
-EXTAPI_DLLEXPORT simxInt simxSetBooleanParameter(simxInt clientID,simxInt paramIdentifier,simxUChar paramValue,simxInt operationMode)
+EXTAPI_DLLEXPORT simxInt simxSetBoolParam(simxInt clientID,simxInt paramIdentifier,simxUChar paramValue,simxInt operationMode)
 {
     simxInt returnValue;
     if (_communicationThreadRunning[clientID]==0)
@@ -3257,7 +3302,7 @@ EXTAPI_DLLEXPORT simxInt simxSetBooleanParameter(simxInt clientID,simxInt paramI
     return(returnValue);
 }
 
-EXTAPI_DLLEXPORT simxInt simxGetIntegerParameter(simxInt clientID,simxInt paramIdentifier,simxInt* paramValue,simxInt operationMode)
+EXTAPI_DLLEXPORT simxInt simxGetInt32Param(simxInt clientID,simxInt paramIdentifier,simxInt* paramValue,simxInt operationMode)
 {
     simxUChar* dataPointer;
     simxInt returnValue;
@@ -3271,7 +3316,7 @@ EXTAPI_DLLEXPORT simxInt simxGetIntegerParameter(simxInt clientID,simxInt paramI
     return(returnValue);
 }
 
-EXTAPI_DLLEXPORT simxInt simxSetIntegerParameter(simxInt clientID,simxInt paramIdentifier,simxInt paramValue,simxInt operationMode)
+EXTAPI_DLLEXPORT simxInt simxSetInt32Param(simxInt clientID,simxInt paramIdentifier,simxInt paramValue,simxInt operationMode)
 {
     simxInt returnValue;
     if (_communicationThreadRunning[clientID]==0)
@@ -3282,7 +3327,7 @@ EXTAPI_DLLEXPORT simxInt simxSetIntegerParameter(simxInt clientID,simxInt paramI
     return(returnValue);
 }
 
-EXTAPI_DLLEXPORT simxInt simxGetFloatingParameter(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValue,simxInt operationMode)
+EXTAPI_DLLEXPORT simxInt simxGetFloatParam(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValue,simxInt operationMode)
 {
     simxUChar* dataPointer;
     simxInt returnValue;
@@ -3296,7 +3341,7 @@ EXTAPI_DLLEXPORT simxInt simxGetFloatingParameter(simxInt clientID,simxInt param
     return(returnValue);
 }
 
-EXTAPI_DLLEXPORT simxInt simxSetFloatingParameter(simxInt clientID,simxInt paramIdentifier,simxFloat paramValue,simxInt operationMode)
+EXTAPI_DLLEXPORT simxInt simxSetFloatParam(simxInt clientID,simxInt paramIdentifier,simxFloat paramValue,simxInt operationMode)
 {
     simxInt returnValue;
     if (_communicationThreadRunning[clientID]==0)
@@ -3307,7 +3352,7 @@ EXTAPI_DLLEXPORT simxInt simxSetFloatingParameter(simxInt clientID,simxInt param
     return(returnValue);
 }
 
-EXTAPI_DLLEXPORT simxInt simxGetStringParameter(simxInt clientID,simxInt paramIdentifier,simxChar** paramValue,simxInt operationMode)
+EXTAPI_DLLEXPORT simxInt simxGetStringParam(simxInt clientID,simxInt paramIdentifier,simxChar** paramValue,simxInt operationMode)
 {
     simxUChar* dataPointer;
     simxInt returnValue;
@@ -3819,6 +3864,26 @@ EXTAPI_DLLEXPORT simxInt simxWriteStringStream(simxInt clientID,const simxChar* 
 
 EXTAPI_DLLEXPORT simxInt simxGetObjectFloatParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat* parameterValue,simxInt operationMode)
 {
+    return simxGetObjectFloatParam(clientID,objectHandle,parameterID,parameterValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxSetObjectFloatParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat parameterValue,simxInt operationMode)
+{
+    return simxSetObjectFloatParam(clientID,objectHandle,parameterID,parameterValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxGetObjectIntParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxInt* parameterValue,simxInt operationMode)
+{
+    return simxGetObjectInt32Param(clientID,objectHandle,parameterID,parameterValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxSetObjectIntParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxInt parameterValue,simxInt operationMode)
+{
+    return simxSetObjectInt32Param(clientID,objectHandle,parameterID,parameterValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxGetObjectFloatParam(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat* parameterValue,simxInt operationMode)
+{
     simxUChar* dataPointer;
     simxInt returnValue;
     if (_communicationThreadRunning[clientID]==0)
@@ -3831,7 +3896,7 @@ EXTAPI_DLLEXPORT simxInt simxGetObjectFloatParameter(simxInt clientID,simxInt ob
     return(returnValue);
 }
 
-EXTAPI_DLLEXPORT simxInt simxSetObjectFloatParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat parameterValue,simxInt operationMode)
+EXTAPI_DLLEXPORT simxInt simxSetObjectFloatParam(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat parameterValue,simxInt operationMode)
 {
     simxInt returnValue;
     if (_communicationThreadRunning[clientID]==0)
@@ -3843,7 +3908,7 @@ EXTAPI_DLLEXPORT simxInt simxSetObjectFloatParameter(simxInt clientID,simxInt ob
     return(returnValue);
 }
 
-EXTAPI_DLLEXPORT simxInt simxGetObjectIntParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxInt* parameterValue,simxInt operationMode)
+EXTAPI_DLLEXPORT simxInt simxGetObjectInt32Param(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxInt* parameterValue,simxInt operationMode)
 {
     simxUChar* dataPointer;
     simxInt returnValue;
@@ -3857,7 +3922,7 @@ EXTAPI_DLLEXPORT simxInt simxGetObjectIntParameter(simxInt clientID,simxInt obje
     return(returnValue);
 }
 
-EXTAPI_DLLEXPORT simxInt simxSetObjectIntParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxInt parameterValue,simxInt operationMode)
+EXTAPI_DLLEXPORT simxInt simxSetObjectInt32Param(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxInt parameterValue,simxInt operationMode)
 {
     simxInt returnValue;
     if (_communicationThreadRunning[clientID]==0)
@@ -4015,12 +4080,22 @@ EXTAPI_DLLEXPORT simxInt mtlb_simxSetFloatSignal(simxInt clientID,const simxChar
 
 EXTAPI_DLLEXPORT simxInt mtlb_simxSetObjectFloatParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat* parameterValue,simxInt operationMode)
 {
-    return(simxSetObjectFloatParameter(clientID,objectHandle,parameterID,parameterValue[0],operationMode));
+    return(simxSetObjectFloatParam(clientID,objectHandle,parameterID,parameterValue[0],operationMode));
 }
 
 EXTAPI_DLLEXPORT simxInt mtlb_simxSetFloatingParameter(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValue,simxInt operationMode)
 {
-    return(simxSetFloatingParameter(clientID,paramIdentifier,paramValue[0],operationMode));
+    return(simxSetFloatParam(clientID,paramIdentifier,paramValue[0],operationMode));
+}
+
+EXTAPI_DLLEXPORT simxInt mtlb_simxSetObjectFloatParam(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat* parameterValue,simxInt operationMode)
+{
+    return(simxSetObjectFloatParam(clientID,objectHandle,parameterID,parameterValue[0],operationMode));
+}
+
+EXTAPI_DLLEXPORT simxInt mtlb_simxSetFloatParam(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValue,simxInt operationMode)
+{
+    return(simxSetFloatParam(clientID,paramIdentifier,paramValue[0],operationMode));
 }
 
 EXTAPI_DLLEXPORT simxInt mtlb_simxCreateDummy(simxInt clientID,simxFloat* size,const simxUChar* colors,simxInt* objectHandle,simxInt operationMode)
@@ -4626,13 +4701,33 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxReadVisionSensor(JNIEnv *env,
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectFloatParameter(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint pi, jobject pv, jint opMode)
 {
+    return Java_coppelia_remoteApi_simxGetObjectFloatParam(env,obj,clientID,hdl,pi,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectFloatParameter(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint pid, jfloat pv, jint opMode)
+{
+    return Java_coppelia_remoteApi_simxSetObjectFloatParam(env,obj,clientID,hdl,pid,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectIntParameter(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint pid, jobject pv, jint opMode)
+{
+    return Java_coppelia_remoteApi_simxGetObjectInt32Param(env,obj,clientID,hdl,pid,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectIntParameter(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint pid, jint pv, jint opMode)
+{
+    return Java_coppelia_remoteApi_simxSetObjectInt32Param(env,obj,clientID,hdl,pid,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectFloatParam(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint pi, jobject pv, jint opMode)
+{
     simxInt theClientID = clientID;
     simxInt objectHandle = hdl;
     simxInt parameterID = pi;
     simxInt operationMode = opMode;
     simxFloat parameterValue;
 
-    simxInt retVal = simxGetObjectFloatParameter(theClientID, objectHandle, parameterID, &parameterValue, operationMode);
+    simxInt retVal = simxGetObjectFloatParam(theClientID, objectHandle, parameterID, &parameterValue, operationMode);
 
     jclass cls = env->GetObjectClass(pv);
       jmethodID mid = env->GetMethodID(cls, "setValue", "(F)V");
@@ -4641,7 +4736,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectFloatParameter(JNIEn
     return retVal;
 }
 
-JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectFloatParameter(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint pid, jfloat pv, jint opMode)
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectFloatParam(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint pid, jfloat pv, jint opMode)
 {
     simxInt theClientID = clientID;
     simxInt objectHandle = hdl;
@@ -4649,12 +4744,12 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectFloatParameter(JNIEn
     simxFloat parameterValue = pv;
     simxInt operationMode = opMode;
 
-    simxInt retVal = simxSetObjectFloatParameter(theClientID,objectHandle, parameterID, parameterValue, operationMode);
+    simxInt retVal = simxSetObjectFloatParam(theClientID,objectHandle, parameterID, parameterValue, operationMode);
     return retVal;
 }
 
 
-JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectIntParameter(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint pid, jobject pv, jint opMode)
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectInt32Param(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint pid, jobject pv, jint opMode)
 {
     simxInt theClientID = clientID;
     simxInt objectHandle = hdl;
@@ -4662,7 +4757,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectIntParameter(JNIEnv 
     simxInt operationMode = opMode;
     simxInt parameterValue;
 
-    simxInt retVal = simxGetObjectIntParameter(theClientID,objectHandle, parameterID, &parameterValue, operationMode);
+    simxInt retVal = simxGetObjectInt32Param(theClientID,objectHandle, parameterID, &parameterValue, operationMode);
 
     jclass cls = env->GetObjectClass(pv);
       jmethodID mid = env->GetMethodID(cls, "setValue", "(I)V");
@@ -4672,7 +4767,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectIntParameter(JNIEnv 
 }
 
 
-JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectIntParameter(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint pid, jint pv, jint opMode)
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectInt32Param(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint pid, jint pv, jint opMode)
 {
     simxInt theClientID = clientID;
     simxInt objectHandle = hdl;
@@ -4680,10 +4775,9 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectIntParameter(JNIEnv 
     simxInt parameterValue = pv;
     simxInt operationMode = opMode;
 
-    simxInt retVal = simxSetObjectIntParameter(theClientID,objectHandle, parameterID, parameterValue, operationMode);
+    simxInt retVal = simxSetObjectInt32Param(theClientID,objectHandle, parameterID, parameterValue, operationMode);
     return retVal;
 }
-
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetModelProperty(JNIEnv *env, jobject obj, jint clientID, jint hdl, jobject prp, jint opMode)
 {
@@ -4945,12 +5039,38 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectParent(JNIEnv *env, 
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetArrayParameter(JNIEnv *env, jobject obj, jint clientID, jint pid, jobject pv, jint opMode)
 {
+    return Java_coppelia_remoteApi_simxGetArrayParam(env,obj,clientID,pid,pv,opMode);
+}
+
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetArrayParameter(JNIEnv *env, jobject obj, jint clientID, jint pid, jobject pv, jint opMode)
+{
+    return Java_coppelia_remoteApi_simxSetArrayParam(env,obj,clientID,pid,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetIntegerParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
+{
+    return Java_coppelia_remoteApi_simxGetInt32Param(env,obj,clientID,pi,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetIntegerParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jint pv, jint opMode)
+{
+    return Java_coppelia_remoteApi_simxSetInt32Param(env,obj,clientID,pi,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetBooleanParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jboolean pv, jint opMode)
+{
+    return Java_coppelia_remoteApi_simxSetBoolParam(env,obj,clientID,pi,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetArrayParam(JNIEnv *env, jobject obj, jint clientID, jint pid, jobject pv, jint opMode)
+{
     simxInt theClientID = clientID;
     simxInt paramIdentifier = pid;
     simxInt operationMode = opMode;
     simxFloat paramValues[3];
 
-    simxInt retVal = simxGetArrayParameter(theClientID,paramIdentifier, paramValues, operationMode);
+    simxInt retVal = simxGetArrayParam(theClientID,paramIdentifier, paramValues, operationMode);
 
     jsize start = 0;
     jsize size = 3;
@@ -4962,7 +5082,7 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetArrayParameter(JNIEnv *env
 }
 
 
-JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetArrayParameter(JNIEnv *env, jobject obj, jint clientID, jint pid, jobject pv, jint opMode)
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetArrayParam(JNIEnv *env, jobject obj, jint clientID, jint pid, jobject pv, jint opMode)
 {
     simxInt theClientID = clientID;
     simxInt paramIdentifier = pid;
@@ -4977,20 +5097,20 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetArrayParameter(JNIEnv *env
     simxFloat* paramValues = new simxFloat[size];
     env->GetFloatArrayRegion(pvArray, 0, size, (jfloat *)paramValues);
 
-    simxInt retVal = simxSetArrayParameter(theClientID,paramIdentifier, (const simxFloat*) paramValues, operationMode);
+    simxInt retVal = simxSetArrayParam(theClientID,paramIdentifier, (const simxFloat*) paramValues, operationMode);
 
     delete[] paramValues;
     return retVal;
 }
 
-JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetIntegerParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetInt32Param(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
 {
     simxInt theClientID = clientID;
     simxInt paramIdentifier = pi;
     simxInt operationMode = opMode;
     simxInt paramValue;
 
-    simxInt retVal = simxGetIntegerParameter(theClientID,paramIdentifier, &paramValue, operationMode);
+    simxInt retVal = simxGetInt32Param(theClientID,paramIdentifier, &paramValue, operationMode);
 
     jclass cls = env->GetObjectClass(pv);
     jmethodID mid = env->GetMethodID(cls, "setValue", "(I)V");
@@ -4999,25 +5119,25 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetIntegerParameter(JNIEnv *e
     return retVal;
 }
 
-JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetIntegerParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jint pv, jint opMode)
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetInt32Param(JNIEnv *env, jobject obj, jint clientID, jint pi, jint pv, jint opMode)
 {
     simxInt theClientID = clientID;
     simxInt paramIdentifier = pi;
     simxInt paramValue = pv;
     simxInt operationMode = opMode;
 
-    simxInt retVal = simxSetIntegerParameter(theClientID,paramIdentifier, paramValue, operationMode);
+    simxInt retVal = simxSetInt32Param(theClientID,paramIdentifier, paramValue, operationMode);
     return retVal;
 }
 
-JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetBooleanParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jboolean pv, jint opMode)
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetBoolParam(JNIEnv *env, jobject obj, jint clientID, jint pi, jboolean pv, jint opMode)
 {
     simxInt theClientID = clientID;
     simxInt paramIdentifier = pi;
     simxUChar paramValue = pv ? 1 : 0;
     simxInt operationMode = opMode;
 
-    simxInt retVal = simxSetBooleanParameter(theClientID,paramIdentifier, paramValue, operationMode);
+    simxInt retVal = simxSetBoolParam(theClientID,paramIdentifier, paramValue, operationMode);
     return retVal;
 }
 
@@ -5039,15 +5159,19 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetDialogResult(JNIEnv *env, 
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetFloatingParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jfloat pv, jint opMode)
 {
+    return Java_coppelia_remoteApi_simxSetFloatParam(env,obj,clientID,pi,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetFloatParam(JNIEnv *env, jobject obj, jint clientID, jint pi, jfloat pv, jint opMode)
+{
     simxInt theClientID = clientID;
     simxInt paramIdentifier = pi;
     simxFloat paramValue = pv;
     simxInt operationMode = opMode;
 
-    simxInt retVal = simxSetFloatingParameter(theClientID,paramIdentifier, paramValue, operationMode);
+    simxInt retVal = simxSetFloatParam(theClientID,paramIdentifier, paramValue, operationMode);
     return retVal;
 }
-
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxRemoveObject(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint opMode)
 {
@@ -5134,12 +5258,17 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxCheckDistance(JNIEnv *env, jo
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetFloatingParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
 {
+    return JNICALL Java_coppelia_remoteApi_simxGetFloatParam(env,obj,clientID,pi,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetFloatParam(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
+{
     simxInt theClientID = clientID;
     simxInt paramIdentifier = pi;
     simxInt operationMode = opMode;
     simxFloat paramValue;
 
-    simxInt retVal = simxGetFloatingParameter(theClientID,paramIdentifier, &paramValue, operationMode);
+    simxInt retVal = simxGetFloatParam(theClientID,paramIdentifier, &paramValue, operationMode);
 
     jclass cls = env->GetObjectClass(pv);
     jmethodID mid = env->GetMethodID(cls, "setValue", "(F)V");
@@ -5425,12 +5554,22 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetLastErrors(JNIEnv *env, jo
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetBooleanParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
 {
+    return Java_coppelia_remoteApi_simxGetBoolParam(env,obj,clientID,pi,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetStringParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
+{
+    return Java_coppelia_remoteApi_simxGetStringParam(env,obj,clientID,pi,pv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetBoolParam(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
+{
     simxInt theClientID = clientID;
     simxInt paramIdentifier = pi;
     simxUChar paramValue;
     simxInt operationMode = opMode;
 
-    simxInt retVal = simxGetBooleanParameter(theClientID,paramIdentifier, &paramValue, operationMode);
+    simxInt retVal = simxGetBoolParam(theClientID,paramIdentifier, &paramValue, operationMode);
 
     jclass cls = env->GetObjectClass(pv);
     jmethodID mid = env->GetMethodID(cls, "setValue", "(Z)V");
@@ -5439,14 +5578,14 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetBooleanParameter(JNIEnv *e
     return retVal;
 }
 
-JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetStringParameter(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetStringParam(JNIEnv *env, jobject obj, jint clientID, jint pi, jobject pv, jint opMode)
 {
     simxInt theClientID = clientID;
     simxInt paramIdentifier = pi;
     simxChar** paramValue = new simxChar*[1];
     simxInt operationMode = opMode;
 
-    simxInt retVal = simxGetStringParameter(theClientID,paramIdentifier, paramValue, operationMode);
+    simxInt retVal = simxGetStringParam(theClientID,paramIdentifier, paramValue, operationMode);
 
     if (retVal==0)
     {

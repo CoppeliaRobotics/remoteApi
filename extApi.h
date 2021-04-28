@@ -155,6 +155,15 @@ EXTAPI_DLLEXPORT simxInt simxSetIntegerParameter(simxInt clientID,simxInt paramI
 EXTAPI_DLLEXPORT simxInt simxGetFloatingParameter(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxSetFloatingParameter(simxInt clientID,simxInt paramIdentifier,simxFloat paramValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxGetStringParameter(simxInt clientID,simxInt paramIdentifier,simxChar** paramValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxGetArrayParam(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValues,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxSetArrayParam(simxInt clientID,simxInt paramIdentifier,const simxFloat* paramValues,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxGetBoolParam(simxInt clientID,simxInt paramIdentifier,simxUChar* paramValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxSetBoolParam(simxInt clientID,simxInt paramIdentifier,simxUChar paramValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxGetInt32Param(simxInt clientID,simxInt paramIdentifier,simxInt* paramValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxSetInt32Param(simxInt clientID,simxInt paramIdentifier,simxInt paramValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxGetFloatParam(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxSetFloatParam(simxInt clientID,simxInt paramIdentifier,simxFloat paramValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxGetStringParam(simxInt clientID,simxInt paramIdentifier,simxChar** paramValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxGetCollisionHandle(simxInt clientID,const simxChar* collisionObjectName,simxInt* handle,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxGetDistanceHandle(simxInt clientID,const simxChar* distanceObjectName,simxInt* handle,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxGetCollectionHandle(simxInt clientID,const simxChar* collectionName,simxInt* handle,simxInt operationMode);
@@ -191,6 +200,10 @@ EXTAPI_DLLEXPORT simxInt simxGetObjectFloatParameter(simxInt clientID,simxInt ob
 EXTAPI_DLLEXPORT simxInt simxSetObjectFloatParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat parameterValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxGetObjectIntParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxInt* parameterValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxSetObjectIntParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxInt parameterValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxGetObjectFloatParam(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat* parameterValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxSetObjectFloatParam(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat parameterValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxGetObjectInt32Param(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxInt* parameterValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxSetObjectInt32Param(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxInt parameterValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxGetModelProperty(simxInt clientID,simxInt objectHandle,simxInt* prop,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxSetModelProperty(simxInt clientID,simxInt objectHandle,simxInt prop,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxCreateDummy(simxInt clientID,simxFloat size,const simxUChar* colors,simxInt* objectHandle,simxInt operationMode);
@@ -230,6 +243,8 @@ EXTAPI_DLLEXPORT simxInt mtlb_simxSetJointMaxForce(simxInt clientID,simxInt join
 EXTAPI_DLLEXPORT simxInt mtlb_simxSetFloatSignal(simxInt clientID,const simxChar* signalName,simxFloat* signalValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt mtlb_simxSetObjectFloatParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat* parameterValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt mtlb_simxSetFloatingParameter(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt mtlb_simxSetObjectFloatParam(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat* parameterValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt mtlb_simxSetFloatParam(simxInt clientID,simxInt paramIdentifier,simxFloat* paramValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt mtlb_simxCreateDummy(simxInt clientID,simxFloat* size,const simxUChar* colors,simxInt* objectHandle,simxInt operationMode);
 
 EXTAPI_DLLEXPORT simxInt mtlb_simxReadProximitySensor(simxInt* clientIDandSensorHandle,simxUChar* detectionState,simxFloat* detectedPoint,simxInt* detectedObjectHandle,simxFloat* detectedSurfaceNormalVector,simxInt operationMode);
