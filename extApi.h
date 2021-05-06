@@ -185,15 +185,18 @@ EXTAPI_DLLEXPORT simxInt simxGetObjectSelection(simxInt clientID,simxInt** objec
 EXTAPI_DLLEXPORT simxInt simxSetObjectSelection(simxInt clientID,const simxInt* objectHandles,simxInt objectCount,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxClearFloatSignal(simxInt clientID,const simxChar* signalName,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxClearIntegerSignal(simxInt clientID,const simxChar* signalName,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxClearInt32Signal(simxInt clientID,const simxChar* signalName,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxClearStringSignal(simxInt clientID,const simxChar* signalName,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxGetFloatSignal(simxInt clientID,const simxChar* signalName,simxFloat* signalValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxGetIntegerSignal(simxInt clientID,const simxChar* signalName,simxInt* signalValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxGetInt32Signal(simxInt clientID,const simxChar* signalName,simxInt* signalValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxGetStringSignal(simxInt clientID,const simxChar* signalName,simxUChar** signalValue,simxInt* signalLength,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxGetAndClearStringSignal(simxInt clientID,const simxChar* signalName,simxUChar** signalValue,simxInt* signalLength,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxReadStringStream(simxInt clientID,const simxChar* signalName,simxUChar** signalValue,simxInt* signalLength,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxWriteStringStream(simxInt clientID,const simxChar* signalName,const simxUChar* signalValue,simxInt signalLength,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxSetFloatSignal(simxInt clientID,const simxChar* signalName,simxFloat signalValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxSetIntegerSignal(simxInt clientID,const simxChar* signalName,simxInt signalValue,simxInt operationMode);
+EXTAPI_DLLEXPORT simxInt simxSetInt32Signal(simxInt clientID,const simxChar* signalName,simxInt signalValue,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxSetStringSignal(simxInt clientID,const simxChar* signalName,const simxUChar* signalValue,simxInt signalLength,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxAppendStringSignal(simxInt clientID,const simxChar* signalName,const simxUChar* signalValue,simxInt signalLength,simxInt operationMode);
 EXTAPI_DLLEXPORT simxInt simxGetObjectFloatParameter(simxInt clientID,simxInt objectHandle,simxInt parameterID,simxFloat* parameterValue,simxInt operationMode);

@@ -3695,6 +3695,11 @@ EXTAPI_DLLEXPORT simxInt simxClearFloatSignal(simxInt clientID,const simxChar* s
 
 EXTAPI_DLLEXPORT simxInt simxClearIntegerSignal(simxInt clientID,const simxChar* signalName,simxInt operationMode)
 {
+    return simxClearInt32Signal(clientID,signalName,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxClearInt32Signal(simxInt clientID,const simxChar* signalName,simxInt operationMode)
+{
     simxInt returnValue;
     if (_communicationThreadRunning[clientID]==0)
         return(simx_return_initialize_error_flag);
@@ -3730,6 +3735,11 @@ EXTAPI_DLLEXPORT simxInt simxGetFloatSignal(simxInt clientID,const simxChar* sig
 }
 
 EXTAPI_DLLEXPORT simxInt simxGetIntegerSignal(simxInt clientID,const simxChar* signalName,simxInt* signalValue,simxInt operationMode)
+{
+    return simxGetInt32Signal(clientID,signalName,signalValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxGetInt32Signal(simxInt clientID,const simxChar* signalName,simxInt* signalValue,simxInt operationMode)
 {
     simxUChar* dataPointer;
     simxInt returnValue;
@@ -3824,6 +3834,11 @@ EXTAPI_DLLEXPORT simxInt simxSetFloatSignal(simxInt clientID,const simxChar* sig
 }
 
 EXTAPI_DLLEXPORT simxInt simxSetIntegerSignal(simxInt clientID,const simxChar* signalName,simxInt signalValue,simxInt operationMode)
+{
+    return simxSetInt32Signal(clientID,signalName,signalValue,operationMode);
+}
+
+EXTAPI_DLLEXPORT simxInt simxSetInt32Signal(simxInt clientID,const simxChar* signalName,simxInt signalValue,simxInt operationMode)
 {
     simxInt returnValue;
     if (_communicationThreadRunning[clientID]==0)
@@ -5893,14 +5908,18 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxClearStringSignal(JNIEnv *env
     return retVal;
 }
 
-
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxClearIntegerSignal(JNIEnv *env, jobject obj, jint clientID, jstring sn, jint opMode)
+{
+    return Java_coppelia_remoteApi_simxClearInt32Signal(env,obj,clientID,sn,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxClearInt32Signal(JNIEnv *env, jobject obj, jint clientID, jstring sn, jint opMode)
 {
     simxInt theClientID = clientID;
     const simxChar *signalName = (simxChar*)env->GetStringUTFChars(sn, 0);
     simxInt operationMode = opMode;
 
-    simxInt retVal = simxClearIntegerSignal(theClientID,signalName, operationMode);
+    simxInt retVal = simxClearInt32Signal(theClientID,signalName, operationMode);
 
     env->ReleaseStringUTFChars( sn,signalName);
     return retVal;
@@ -5924,15 +5943,19 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetFloatSignal(JNIEnv *env, j
     return retVal;
 }
 
-
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetIntegerSignal(JNIEnv *env, jobject obj, jint clientID, jstring sn, jobject sv, jint opMode)
+{
+    return Java_coppelia_remoteApi_simxGetInt32Signal(env,obj,clientID,sn,sv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetInt32Signal(JNIEnv *env, jobject obj, jint clientID, jstring sn, jobject sv, jint opMode)
 {
     simxInt theClientID = clientID;
     const simxChar *signalName = (simxChar*)env->GetStringUTFChars(sn, 0);
     simxInt signalValue;
     simxInt operationMode = opMode;
 
-    simxInt retVal = simxGetIntegerSignal(theClientID, signalName, &signalValue, operationMode);
+    simxInt retVal = simxGetInt32Signal(theClientID, signalName, &signalValue, operationMode);
 
     jclass cls = env->GetObjectClass(sv);
     jmethodID mid = env->GetMethodID(cls, "setValue", "(I)V");
@@ -6035,12 +6058,17 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetFloatSignal(JNIEnv *env, j
 
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetIntegerSignal(JNIEnv *env, jobject obj, jint clientID, jstring sn, jint sv, jint opMode)
 {
+    return Java_coppelia_remoteApi_simxSetInt32Signal(env,obj,clientID,sn,sv,opMode);
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetInt32Signal(JNIEnv *env, jobject obj, jint clientID, jstring sn, jint sv, jint opMode)
+{
     simxInt theClientID = clientID;
     const simxChar *signalName = (simxChar*)env->GetStringUTFChars(sn, 0);
     simxInt signalValue = sv;
     simxInt operationMode = opMode;
 
-    simxInt retVal = simxSetIntegerSignal( theClientID,signalName, signalValue, operationMode);
+    simxInt retVal = simxSetInt32Signal( theClientID,signalName, signalValue, operationMode);
     env->ReleaseStringUTFChars( sn,signalName);
     return retVal;
 }
