@@ -4402,6 +4402,26 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectPosition(JNIEnv *env
     return retVal;
 }
 
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxGetObjectQuaternion(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint rel, jobject q, jint opMode)
+{
+    simxInt theClientID = clientID;
+    simxInt objectHandle = hdl;
+    simxInt relativeToObjectHandle = rel;
+    simxFloat quat[4];
+    simxInt operationMode = opMode;
+
+    simxInt retVal = simxGetObjectQuaternion(theClientID,objectHandle, relativeToObjectHandle, quat, operationMode);
+
+    jsize start = 0;
+    jsize size = 4;
+    jclass cls = env->GetObjectClass(q);
+    jmethodID mid = env->GetMethodID(cls, "getNewArray", "(I)[F");
+    jfloatArray posArray = (jfloatArray)env->CallObjectMethod(q, mid, size);
+    env->SetFloatArrayRegion(posArray, start, size, (const jfloat *)quat);
+
+    return retVal;
+}
+
 JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectPosition(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint rel, jobject pos, jint opMode)
 {
     simxInt theClientID = clientID;
@@ -4417,6 +4437,25 @@ JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectPosition(JNIEnv *env
     simxInt operationMode = opMode;
 
     simxInt retVal = simxSetObjectPosition(theClientID,objectHandle, relativeToObjectHandle, position, operationMode);
+
+    return retVal;
+}
+
+JNIEXPORT jint JNICALL Java_coppelia_remoteApi_simxSetObjectQuaternion(JNIEnv *env, jobject obj, jint clientID, jint hdl, jint rel, jobject q, jint opMode)
+{
+    simxInt theClientID = clientID;
+    simxInt objectHandle = hdl;
+    simxInt relativeToObjectHandle = rel;
+    simxFloat quat[4];
+
+    jclass cls = env->GetObjectClass(q);
+    jmethodID mid = env->GetMethodID(cls, "getArray", "()[F");
+    jfloatArray qArray = (jfloatArray)env->CallObjectMethod(q, mid);
+    env->GetFloatArrayRegion(qArray, 0, 4, (jfloat *)quat);
+
+    simxInt operationMode = opMode;
+
+    simxInt retVal = simxSetObjectQuaternion(theClientID,objectHandle, relativeToObjectHandle, quat, operationMode);
 
     return retVal;
 }
