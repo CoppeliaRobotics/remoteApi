@@ -6,7 +6,7 @@ extern "C" {
 #endif
 #ifdef NON_MATLAB_PARSING /* when compiling, make sure NON_MATLAB_PARSING is always defined! */
     #include "extApiPlatform.h"
-    #include "simConst.h"
+    #include <simLib/simConst.h>
 #else
     typedef char simxChar;
     typedef unsigned char simxUChar;
